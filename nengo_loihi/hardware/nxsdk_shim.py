@@ -72,9 +72,17 @@ except ImportError:
 
 if HAS_NXSDK:
     micro_gen = d_import(b"bnhzZGsuY29tcGlsZXIubWljcm9jb2RlZ2VuLmludGVyZmFjZQ==")
-    TraceConfigGenerator = d_import(
-        b"bnhzZGsuY29tcGlsZXIudHJhY2VjZmdnZW4udHJhY2VjZmdnZW4=", b"VHJhY2VDZmdHZW4="
-    )
+    # TODO: Remove once nxsdk 0.9.1 support is added
+    try:
+        TraceConfigGenerator = d_import(
+            b"bnhzZGsuY29tcGlsZXIudHJhY2VjZmdnZW4udHJhY2VjZmdnZW4=", b"VHJhY2VDZmdHZW4="
+        )
+    except ImportError:
+        TraceConfigGenerator = d_import(
+            b"bnhzZGsuYXJjaC5uMmEuY29tcGlsZXIudHJhY2VjZmdnZW4udHJhY2VjZmdnZW4=",
+            b"VHJhY2VDZmdHZW4=",
+        )
+
     NxsdkBoard = d_import(b"bnhzZGsuZ3JhcGgubnhib2FyZA==", b"TjJCb2FyZA==")
     SpikeGen = d_import(
         b"bnhzZGsuZ3JhcGgubnhpbnB1dGdlbi5ueGlucHV0Z2Vu", b"QmFzaWNTcGlrZUdlbmVyYXRvcg=="
