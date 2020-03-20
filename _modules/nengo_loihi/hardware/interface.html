@@ -1,0 +1,1236 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>nengo_loihi.hardware.interface &#8212; Nengo Loihi 0.11.0.dev0 docs</title>
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,600|Rajdhani:700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<link rel="stylesheet" href="https://www.nengo.ai/css/bootstrap.css" type="text/css">
+<style>
+  body .title-bar,
+  body .documentation-source h1:after {
+    background-color: #127bc1;
+  }
+</style>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41658423-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-41658423-2');
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stickyfill/2.1.0/stickyfill.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<!-- From basic/layout.html -->
+<script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+  
+  
+<script src="../../../_static/underscore.js"></script>
+  
+  
+<script src="../../../_static/doctools.js"></script>
+  
+  
+<script src="../../../_static/language_data.js"></script>
+  
+  
+<script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+  
+  
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+  
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<link rel="stylesheet" type="text/css" href="../../../_static/custom.css">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  </head><body class="bg-dark">
+
+<header class="fixed-top header-top shadow-sm">
+  <nav class="navbar navbar-expand-md navbar-light bg-white">
+    <a class="navbar-brand" href="https://www.nengo.ai/">
+      <img
+        src="https://www.nengo.ai/design/_images/general-full-light.svg"
+        alt="Nengo"
+        class="logo"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbar-collapse"
+      aria-controls="navbar-collapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.nengo.ai/">What is Nengo?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.nengo.ai/examples/">Examples</a>
+        </li>
+        <li class="nav-item dropdown active">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbar-dropdown-docs"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            href="#"
+            >Documentation</a
+          >
+          <div
+            class="dropdown-menu shadow-lg border-0"
+            aria-labelledby="navbar-dropdown-docs"
+          >
+            
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo/">Nengo Core</a>
+            <a class="dropdown-item" href="https://github.com/nengo/nengo-gui/">Nengo GUI</a>
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo-dl/">Nengo DL</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo-spa/">Nengo SPA</a>
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo-extras/">Nengo Extras</a>
+            <a class="dropdown-item" href="https://arvoelke.github.io/nengolib-docs/">Nengolib</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo-fpga/">Nengo FPGA</a>
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo-loihi/">Nengo Loihi</a>
+            <a class="dropdown-item" href="https://github.com/nengo/nengo-ocl">Nengo OpenCL</a>
+            <a class="dropdown-item" href="https://github.com/project-rig/nengo_spinnaker">Nengo SpiNNaker</a>
+            <a class="dropdown-item" href="https://github.com/nengo/nengo-mpi">Nengo MPI</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="https://www.nengo.ai/documentation/"
+              >All documentation</a
+            >
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbar-dropdown-community"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            href="#"
+            >Community</a
+          >
+          <div
+            class="dropdown-menu shadow-lg border-0"
+            aria-labelledby="navbar-dropdown-community"
+          >
+            <a class="dropdown-item" href="https://forum.nengo.ai">Forum</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="https://www.nengo.ai/people/"
+              >People</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/summer-school/"
+              >Summer school</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/contributing/"
+              >Contributing</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/publications/"
+              >Publications</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/videos/"
+              >Videos</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/conduct/"
+              >Code of conduct</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/caa/">CAA</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link btn btn-success btn-sm text-white"
+            href="https://www.nengo.ai/getting-started/"
+            >Getting started</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<div class="main-content gradient-top">
+  <div class="container-fluid">
+    <div class="row"><a class="toggle-sidenav d-block d-md-none" href="#"
+  ><i class="icon-close fa fa-fw fa-arrow-left"></i
+  ><i class="icon-open fa fa-fw fa-arrow-right"></i
+></a>
+<div role="complementary" class="sidenav col-4 col-xl-3 p-0 border-right">
+  <h3 class="pt-5 px-5">
+    <a href="../../../index.html">
+      <img
+        class="img-fluid documentation-image"
+        src="https://www.nengo.ai/design/_images/nengo-loihi-full-light.svg"
+        alt="Nengo Loihi"
+      />
+    </a>
+  </h3>
+  
+  <form class="px-5 pb-5 mb-0 mt-3 border-bottom">
+    <div class="form-group">
+      <label class="text-gray">Version:</label>
+      <select class="custom-select" onchange="switchVersion(this);">
+        
+        
+        <option selected>latest</option>
+        
+        
+          
+        <option value="../../../v0.9.0/_modules/nengo_loihi/hardware/interface.html">
+          v0.9.0
+        </option>
+          
+        
+          
+        <option value="../../../v0.8.0/_modules/nengo_loihi/hardware/interface.html">
+          v0.8.0
+        </option>
+          
+        
+          
+        <option value="../../../v0.7.0/_modules/nengo_loihi/hardware/interface.html">
+          v0.7.0
+        </option>
+          
+        
+          
+        <option value="../../../v0.10.0/_modules/nengo_loihi/hardware/interface.html">
+          v0.10.0
+        </option>
+          
+        
+          
+        <option value="../../..//_modules/nengo_loihi/hardware/interface.html">
+          
+        </option>
+          
+        
+      </select>
+    </div>
+  </form>
+  
+  <div class="p-5 toctree">
+    <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Example models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tips.html">Tips and tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/index.html">Hardware setup</a></li>
+</ul>
+
+  </div>
+<form class="p-5 my-0 border-top" action="../../../search.html" method="get">
+  <div class="form-group form-group-single">
+    <input type="text" name="q" class="form-control" placeholder="Search" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+    <button type="submit" class="btn btn-link">
+      <img src="https://www.nengo.ai/img/icon-search.svg" alt="Go" />
+    </button>
+  </div>
+</form></div>
+      
+
+      <div class="col-12 col-md-8 col-xl-9">
+        <div class="container">
+          <div class="row">
+            <div class="col-10 offset-1 pb-5 documentation-source" role="main">
+              
+  <h1>Source code for nengo_loihi.hardware.interface</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span> <span class="nn">distutils.version</span> <span class="kn">import</span> <span class="n">LooseVersion</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">select</span> <span class="kn">import</span> <span class="n">select</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">struct</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">import</span> <span class="nn">jinja2</span>
+<span class="kn">from</span> <span class="nn">nengo.exceptions</span> <span class="kn">import</span> <span class="n">SimulationError</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">nengo_loihi.builder.discretize</span> <span class="kn">import</span> <span class="n">scale_pes_errors</span>
+<span class="kn">from</span> <span class="nn">nengo_loihi.compat</span> <span class="kn">import</span> <span class="n">make_process_step</span>
+<span class="kn">from</span> <span class="nn">nengo_loihi.hardware.allocators</span> <span class="kn">import</span> <span class="n">Greedy</span>
+<span class="kn">from</span> <span class="nn">nengo_loihi.hardware.builder</span> <span class="kn">import</span> <span class="n">build_board</span>
+<span class="kn">from</span> <span class="nn">nengo_loihi.hardware.nxsdk_objects</span> <span class="kn">import</span> <span class="n">LoihiSpikeInput</span>
+<span class="kn">from</span> <span class="nn">nengo_loihi.hardware.nxsdk_shim</span> <span class="kn">import</span> <span class="n">assert_nxsdk</span><span class="p">,</span> <span class="n">nxsdk</span><span class="p">,</span> <span class="n">SnipPhase</span><span class="p">,</span> <span class="n">SpikeProbe</span>
+<span class="kn">from</span> <span class="nn">nengo_loihi.hardware.validate</span> <span class="kn">import</span> <span class="n">validate_board</span>
+<span class="kn">from</span> <span class="nn">nengo_loihi.nxsdk_obfuscation</span> <span class="kn">import</span> <span class="n">d</span><span class="p">,</span> <span class="n">d_func</span><span class="p">,</span> <span class="n">d_get</span>
+<span class="kn">from</span> <span class="nn">nengo_loihi.probe</span> <span class="kn">import</span> <span class="n">LoihiProbe</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">ceil_div</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="p">((</span><span class="o">-</span><span class="n">a</span><span class="p">)</span> <span class="o">//</span> <span class="n">b</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">roundup</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">b</span> <span class="o">*</span> <span class="n">ceil_div</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="HardwareInterface"><a class="viewcode-back" href="../../../api.html#nengo_loihi.hardware.HardwareInterface">[docs]</a><span class="k">class</span> <span class="nc">HardwareInterface</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Place a Model onto a Loihi board and run it.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : Model</span>
+<span class="sd">        Model specification that will be placed on the Loihi board.</span>
+<span class="sd">    use_snips : boolean, optional (Default: True)</span>
+<span class="sd">        Whether to use snips (e.g., for ``precompute=False``).</span>
+<span class="sd">    seed : int, optional (Default: None)</span>
+<span class="sd">        A seed for stochastic operations.</span>
+<span class="sd">    snip_max_spikes_per_step : int</span>
+<span class="sd">        The maximum number of spikes that can be sent to each chip in one</span>
+<span class="sd">        timestep if ``.use_snips`` is True.</span>
+<span class="sd">    n_chips : int, optional (Default: 2)</span>
+<span class="sd">        The number of chips on the board.</span>
+<span class="sd">    allocator : Allocator, optional (Default: ``Greedy()``)</span>
+<span class="sd">        Callable object that allocates the board&#39;s devices to given models.</span>
+<span class="sd">        Defaults to one block and one input per core on a single chip.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">connection_retries</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">min_nxsdk_version</span> <span class="o">=</span> <span class="n">LooseVersion</span><span class="p">(</span><span class="s2">&quot;0.8.7&quot;</span><span class="p">)</span>
+    <span class="n">max_nxsdk_version</span> <span class="o">=</span> <span class="n">LooseVersion</span><span class="p">(</span><span class="s2">&quot;0.9.0&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">use_snips</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">snip_max_spikes_per_step</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+        <span class="n">n_chips</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">allocator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">closed</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_probe_filters</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_probe_filter_pos</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_snips</span> <span class="o">=</span> <span class="n">use_snips</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_nxsdk_version</span><span class="p">()</span>
+
+        <span class="c1"># clear cached content from SpikeProbe class attribute</span>
+        <span class="n">d_func</span><span class="p">(</span><span class="n">SpikeProbe</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;cHJvYmVEaWN0&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;Y2xlYXI=&quot;</span><span class="p">)</span>
+
+        <span class="c1"># --- allocate</span>
+        <span class="n">allocator</span> <span class="o">=</span> <span class="n">Greedy</span><span class="p">()</span> <span class="k">if</span> <span class="n">allocator</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">allocator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">board</span> <span class="o">=</span> <span class="n">allocator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">n_chips</span><span class="o">=</span><span class="n">n_chips</span><span class="p">)</span>
+
+        <span class="c1"># --- validate</span>
+        <span class="n">validate_board</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="p">)</span>
+
+        <span class="c1"># --- build</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nxsdk_board</span> <span class="o">=</span> <span class="n">build_board</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="p">,</span> <span class="n">use_snips</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">use_snips</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span>
+        <span class="p">)</span>
+
+        <span class="c1"># --- create snips or non-snip infrastructure</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">snips</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">no_snips</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_snips</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">snips</span> <span class="o">=</span> <span class="n">Snips</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nxsdk_board</span><span class="p">,</span> <span class="n">snip_max_spikes_per_step</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">chip2host</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">snips</span><span class="o">.</span><span class="n">chip2host</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">no_snips</span> <span class="o">=</span> <span class="n">NoSnips</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="o">.</span><span class="n">probe_map</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nxsdk_board</span><span class="o">.</span><span class="n">global_spike_generator</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">chip2host</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">no_snips</span><span class="o">.</span><span class="n">chip2host</span>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">closed</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SimulationError</span><span class="p">(</span>
+                <span class="s2">&quot;Loihi interface has been closed and cannot be reopened.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">connected</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">check_nxsdk_version</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="c1"># raise exception if nxsdk not installed</span>
+        <span class="n">assert_nxsdk</span><span class="p">()</span>
+
+        <span class="c1"># if installed, check version</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="n">LooseVersion</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">nxsdk</span><span class="p">,</span> <span class="s2">&quot;__version__&quot;</span><span class="p">,</span> <span class="s2">&quot;0.0.0&quot;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">version</span> <span class="o">&lt;</span> <span class="bp">cls</span><span class="o">.</span><span class="n">min_nxsdk_version</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+                <span class="s2">&quot;nengo-loihi requires nxsdk&gt;=</span><span class="si">%s</span><span class="s2">, found </span><span class="si">%s</span><span class="s2">&quot;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">min_nxsdk_version</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">version</span> <span class="o">&gt;</span> <span class="bp">cls</span><span class="o">.</span><span class="n">max_nxsdk_version</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;nengo-loihi has not been tested with your nxsdk &quot;</span>
+                <span class="s2">&quot;version (</span><span class="si">%s</span><span class="s2">); latest fully supported version is &quot;</span>
+                <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">max_nxsdk_version</span><span class="p">)</span>
+            <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">connected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nxsdk_board</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">d_func</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nxsdk_board</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;ZXhlY3V0b3I=&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;aGFzU3RhcnRlZA==&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">snips</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">snips</span><span class="o">.</span><span class="n">connected</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">snips</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nxsdk_board</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">d_func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nxsdk_board</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;ZGlzY29ubmVjdA==&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nxsdk_board</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">closed</span> <span class="o">=</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="HardwareInterface.connect"><a class="viewcode-back" href="../../../api.html#nengo_loihi.hardware.HardwareInterface.connect">[docs]</a>    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Connects to the board.&quot;&quot;&quot;</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Connecting to Loihi, max attempts: </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection_retries</span><span class="p">)</span>
+        <span class="n">last_exception</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_retries</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">d_func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nxsdk_board</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;c3RhcnQ=&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">connected</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">last_exception</span> <span class="o">=</span> <span class="n">e</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Connection error: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Retrying, attempt </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SimulationError</span><span class="p">(</span>
+                <span class="s2">&quot;Board connection error</span><span class="si">%s</span><span class="s2">&quot;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="s2">&quot;: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">last_exception</span> <span class="k">if</span> <span class="n">last_exception</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">get_probe_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probe</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">probe</span><span class="p">,</span> <span class="n">LoihiProbe</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_snips</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">snips</span><span class="o">.</span><span class="n">probe_data</span><span class="p">[</span><span class="n">probe</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nxsdk_probes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="o">.</span><span class="n">probe_map</span><span class="p">[</span><span class="n">probe</span><span class="p">]</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
+                    <span class="p">[</span><span class="n">d_get</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;dGltZVNlcmllcw==&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;ZGF0YQ==&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">nxsdk_probe</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">nxsdk_probe</span> <span class="ow">in</span> <span class="n">nxsdk_probes</span>
+            <span class="p">]</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">probe</span><span class="o">.</span><span class="n">weight_outputs</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
+
+        <span class="c1"># --- Filter probed data</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">dt</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_probe_filter_pos</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">probe</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">synapse</span> <span class="o">=</span> <span class="n">probe</span><span class="o">.</span><span class="n">synapse</span>
+            <span class="n">rng</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">step</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">make_process_step</span><span class="p">(</span><span class="n">synapse</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">rng</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">synapse</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="k">else</span> <span class="kc">None</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_probe_filters</span><span class="p">[</span><span class="n">probe</span><span class="p">]</span> <span class="o">=</span> <span class="n">step</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">step</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_probe_filters</span><span class="p">[</span><span class="n">probe</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">step</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_probe_filter_pos</span><span class="p">[</span><span class="n">probe</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">filt_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),)</span> <span class="o">+</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+                <span class="n">filt_data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">step</span><span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_probe_filter_pos</span><span class="p">[</span><span class="n">probe</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">k</span>
+
+        <span class="k">return</span> <span class="n">filt_data</span>
+
+    <span class="k">def</span> <span class="nf">host2chip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spikes</span><span class="p">,</span> <span class="n">errors</span><span class="p">):</span>
+        <span class="n">loihi_spikes</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">spike_input</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">spikes</span><span class="p">:</span>
+            <span class="n">loihi_spike_input</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nxsdk_board</span><span class="o">.</span><span class="n">spike_inputs</span><span class="p">[</span><span class="n">spike_input</span><span class="p">]</span>
+            <span class="n">loihi_spikes</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">loihi_spike_input</span><span class="o">.</span><span class="n">spikes_to_loihi</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_snips</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">loihi_spikes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">loihi_spikes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Snips process one timestep at a time&quot;</span>
+                <span class="n">loihi_spikes</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">loihi_spikes</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+                <span class="n">loihi_spikes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">loihi_spikes</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">loihi_spikes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">[]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">loihi_spikes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">snips</span><span class="o">.</span><span class="n">host2chip</span><span class="p">(</span><span class="n">loihi_spikes</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="p">),</span> <span class="s2">&quot;Learning only supported with snips (`precompute=False`)&quot;</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">no_snips</span><span class="o">.</span><span class="n">host2chip</span><span class="p">(</span><span class="n">loihi_spikes</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">run_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">steps</span><span class="p">,</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">connected</span><span class="p">,</span> <span class="s2">&quot;Interface is not built&quot;</span>
+
+        <span class="c1"># start the board running the desired number of steps</span>
+        <span class="n">d_get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nxsdk_board</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;cnVu&quot;</span><span class="p">)(</span><span class="n">steps</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;YVN5bmM=&quot;</span><span class="p">):</span> <span class="ow">not</span> <span class="n">blocking</span><span class="p">})</span>
+
+        <span class="c1"># connect snips</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_snips</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">snips</span><span class="o">.</span><span class="n">connected</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">snips</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nxsdk_board</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">wait_for_completion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">d_func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nxsdk_board</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;ZmluaXNoUnVu&quot;</span><span class="p">)</span></div>
+
+
+<span class="k">class</span> <span class="nc">NoSnips</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">probe_map</span><span class="p">,</span> <span class="n">spike_generator</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sent_steps</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">probe_map</span> <span class="o">=</span> <span class="n">probe_map</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spike_generator</span> <span class="o">=</span> <span class="n">spike_generator</span>
+
+    <span class="k">def</span> <span class="nf">chip2host</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probes_receivers</span><span class="p">):</span>
+        <span class="n">increment</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">probe</span><span class="p">,</span> <span class="n">receiver</span> <span class="ow">in</span> <span class="n">probes_receivers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">nxsdk_probes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">probe_map</span><span class="p">[</span><span class="n">probe</span><span class="p">]</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="n">d_get</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;dGltZVNlcmllcw==&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;ZGF0YQ==&quot;</span><span class="p">)[</span><span class="bp">self</span><span class="o">.</span><span class="n">sent_steps</span> <span class="p">:]</span>
+                        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">nxsdk_probe</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">nxsdk_probe</span> <span class="ow">in</span> <span class="n">nxsdk_probes</span>
+            <span class="p">]</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">probe</span><span class="o">.</span><span class="n">weight_outputs</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">increment</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">increment</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+                <span class="k">assert</span> <span class="n">increment</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s2">&quot;All x need same number of steps&quot;</span>
+
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+                    <span class="n">receiver</span><span class="o">.</span><span class="n">receive</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sent_steps</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">increment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sent_steps</span> <span class="o">+=</span> <span class="n">increment</span>
+
+    <span class="k">def</span> <span class="nf">host2chip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loihi_spikes</span><span class="p">):</span>
+        <span class="n">nxsdk_spike_generator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spike_generator</span>
+        <span class="n">tmax</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">spikes</span> <span class="ow">in</span> <span class="n">loihi_spikes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">assert</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="n">tmax</span><span class="p">,</span> <span class="s2">&quot;Spikes must be in order&quot;</span>
+            <span class="n">tmax</span> <span class="o">=</span> <span class="n">t</span>
+            <span class="n">LoihiSpikeInput</span><span class="o">.</span><span class="n">add_spikes_to_generator</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">spikes</span><span class="p">,</span> <span class="n">nxsdk_spike_generator</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Snips</span><span class="p">:</span>
+
+    <span class="n">channel_packet_elements</span> <span class="o">=</span> <span class="mi">64</span>  <span class="c1"># size of channel packets in int32s</span>
+    <span class="n">channel_bytes_per_element</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># bytes per int32 (channel packets element size)</span>
+    <span class="n">packet_bytes</span> <span class="o">=</span> <span class="n">channel_packet_elements</span> <span class="o">*</span> <span class="n">channel_bytes_per_element</span>
+
+    <span class="n">snips_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;snips&quot;</span><span class="p">)</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">Environment</span><span class="p">(</span>
+        <span class="n">trim_blocks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">loader</span><span class="o">=</span><span class="n">jinja2</span><span class="o">.</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="n">snips_dir</span><span class="p">),</span>
+        <span class="n">keep_trailing_newline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># obfuscated strings used in templates</span>
+    <span class="n">obfs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">core_class</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;TmV1cm9uQ29yZQ==&quot;</span><span class="p">),</span>
+        <span class="n">id_class</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Q29yZUlk&quot;</span><span class="p">),</span>
+        <span class="n">get_channel</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Z2V0Q2hhbm5lbElE&quot;</span><span class="p">),</span>
+        <span class="n">int_type</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;aW50MzJfdA==&quot;</span><span class="p">),</span>
+        <span class="n">spike_size</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Mg==&quot;</span><span class="p">),</span>
+        <span class="n">error_info_size</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Mg==&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span>
+        <span class="n">s_data</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;dXNlckRhdGE=&quot;</span><span class="p">),</span>
+        <span class="n">s_step</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;dGltZV9zdGVw&quot;</span><span class="p">),</span>
+        <span class="n">s_n_steps</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;dG90YWxfc3RlcHM=&quot;</span><span class="p">),</span>
+        <span class="n">read</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;cmVhZENoYW5uZWw=&quot;</span><span class="p">),</span>
+        <span class="n">write</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;d3JpdGVDaGFubmVs&quot;</span><span class="p">),</span>
+        <span class="n">spike_shift</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;MTY=&quot;</span><span class="p">),</span>
+        <span class="n">spike_mask</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;MHgwMDAwRkZGRg==&quot;</span><span class="p">),</span>
+        <span class="n">do_axon_type_0</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;bnhfc2VuZF9kaXNjcmV0ZV9zcGlrZQ==&quot;</span><span class="p">),</span>
+        <span class="n">do_axon_type_16</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;bnhfc2VuZF9wb3AxNl9zcGlrZQ==&quot;</span><span class="p">),</span>
+        <span class="n">do_axon_type_32</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;bnhfc2VuZF9wb3AzMl9zcGlrZQ==&quot;</span><span class="p">),</span>
+        <span class="n">comp_state</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Y3hfc3RhdGU=&quot;</span><span class="p">),</span>
+        <span class="n">neuron</span><span class="o">=</span><span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;TkVVUk9OX1BUUg==&quot;</span><span class="p">),</span>
+        <span class="c1"># pylint: disable=line-too-long</span>
+        <span class="n">pos_pes_cfg</span><span class="o">=</span><span class="n">d</span><span class="p">(</span>
+            <span class="sa">b</span><span class="s2">&quot;bmV1cm9uLT5zdGRwX3Bvc3Rfc3RhdGVbY29tcGFydG1lbnRfaWR4XSA9ICAgICAgICAgICAgICAgICAgICAgKFBvc3RUcmFjZUVudHJ5KSB7CiAgICAgICAgICAgICAgICAgICAgICAgIC5Zc3Bpa2UwICAgICAgPSAwLAogICAgICAgICAgICAgICAgICAgICAgICAuWXNwaWtlMSAgICAgID0gMCwKICAgICAgICAgICAgICAgICAgICAgICAgLllzcGlrZTIgICAgICA9IDAsCiAgICAgICAgICAgICAgICAgICAgICAgIC5ZZXBvY2gwICAgICAgPSBhYnMoZXJyb3IpLAogICAgICAgICAgICAgICAgICAgICAgICAuWWVwb2NoMSAgICAgID0gMCwKICAgICAgICAgICAgICAgICAgICAgICAgLlllcG9jaDIgICAgICA9IDAsCiAgICAgICAgICAgICAgICAgICAgICAgIC5Uc3Bpa2UgICAgICAgPSAwLAogICAgICAgICAgICAgICAgICAgICAgICAuVHJhY2VQcm9maWxlID0gMywKICAgICAgICAgICAgICAgICAgICAgICAgLlN0ZHBQcm9maWxlICA9IDEKICAgICAgICAgICAgICAgICAgICB9OwogICAgICAgICAgICAgICAgbmV1cm9uLT5zdGRwX3Bvc3Rfc3RhdGVbY29tcGFydG1lbnRfaWR4K25fdmFsc10gPSAgICAgICAgICAgICAgICAgICAgIChQb3N0VHJhY2VFbnRyeSkgewogICAgICAgICAgICAgICAgICAgICAgICAuWXNwaWtlMCAgICAgID0gMCwKICAgICAgICAgICAgICAgICAgICAgICAgLllzcGlrZTEgICAgICA9IDAsCiAgICAgICAgICAgICAgICAgICAgICAgIC5Zc3Bpa2UyICAgICAgPSAwLAogICAgICAgICAgICAgICAgICAgICAgICAuWWVwb2NoMCAgICAgID0gYWJzKGVycm9yKSwKICAgICAgICAgICAgICAgICAgICAgICAgLlllcG9jaDEgICAgICA9IDAsCiAgICAgICAgICAgICAgICAgICAgICAgIC5ZZXBvY2gyICAgICAgPSAwLAogICAgICAgICAgICAgICAgICAgICAgICAuVHNwaWtlICAgICAgID0gMCwKICAgICAgICAgICAgICAgICAgICAgICAgLlRyYWNlUHJvZmlsZSA9IDMsCiAgICAgICAgICAgICAgICAgICAgICAgIC5TdGRwUHJvZmlsZSAgPSAwCiAgICAgICAgICAgICAgICAgICAgfTs=&quot;</span>
+        <span class="p">),</span>
+        <span class="c1"># pylint: disable=line-too-long</span>
+        <span class="n">neg_pes_cfg</span><span class="o">=</span><span class="n">d</span><span class="p">(</span>
+            <span class="sa">b</span><span class="s2">&quot;bmV1cm9uLT5zdGRwX3Bvc3Rfc3RhdGVbY29tcGFydG1lbnRfaWR4XSA9ICAgICAgICAgICAgICAgICAgICAgKFBvc3RUcmFjZUVudHJ5KSB7CiAgICAgICAgICAgICAgICAgICAgICAgIC5Zc3Bpa2UwICAgICAgPSAwLAogICAgICAgICAgICAgICAgICAgICAgICAuWXNwaWtlMSAgICAgID0gMCwKICAgICAgICAgICAgICAgICAgICAgICAgLllzcGlrZTIgICAgICA9IDAsCiAgICAgICAgICAgICAgICAgICAgICAgIC5ZZXBvY2gwICAgICAgPSBhYnMoZXJyb3IpLAogICAgICAgICAgICAgICAgICAgICAgICAuWWVwb2NoMSAgICAgID0gMCwKICAgICAgICAgICAgICAgICAgICAgICAgLlllcG9jaDIgICAgICA9IDAsCiAgICAgICAgICAgICAgICAgICAgICAgIC5Uc3Bpa2UgICAgICAgPSAwLAogICAgICAgICAgICAgICAgICAgICAgICAuVHJhY2VQcm9maWxlID0gMywKICAgICAgICAgICAgICAgICAgICAgICAgLlN0ZHBQcm9maWxlICA9IDAKICAgICAgICAgICAgICAgICAgICB9OwogICAgICAgICAgICAgICAgbmV1cm9uLT5zdGRwX3Bvc3Rfc3RhdGVbY29tcGFydG1lbnRfaWR4K25fdmFsc10gPSAgICAgICAgICAgICAgICAgICAgIChQb3N0VHJhY2VFbnRyeSkgewogICAgICAgICAgICAgICAgICAgICAgICAuWXNwaWtlMCAgICAgID0gMCwKICAgICAgICAgICAgICAgICAgICAgICAgLllzcGlrZTEgICAgICA9IDAsCiAgICAgICAgICAgICAgICAgICAgICAgIC5Zc3Bpa2UyICAgICAgPSAwLAogICAgICAgICAgICAgICAgICAgICAgICAuWWVwb2NoMCAgICAgID0gYWJzKGVycm9yKSwKICAgICAgICAgICAgICAgICAgICAgICAgLlllcG9jaDEgICAgICA9IDAsCiAgICAgICAgICAgICAgICAgICAgICAgIC5ZZXBvY2gyICAgICAgPSAwLAogICAgICAgICAgICAgICAgICAgICAgICAuVHNwaWtlICAgICAgID0gMCwKICAgICAgICAgICAgICAgICAgICAgICAgLlRyYWNlUHJvZmlsZSA9IDMsCiAgICAgICAgICAgICAgICAgICAgICAgIC5TdGRwUHJvZmlsZSAgPSAxCiAgICAgICAgICAgICAgICAgICAgfTs=&quot;</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">board</span><span class="p">,</span> <span class="n">nxsdk_board</span><span class="p">,</span> <span class="n">max_spikes_per_step</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_spikes_per_step</span> <span class="o">=</span> <span class="n">max_spikes_per_step</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_chip_map</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># maps synapses to core/chip locations for errors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">probe_data</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tmp_snip_dir</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">host_snip</span> <span class="o">=</span> <span class="n">HostSnip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_snip_dir</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chip_snips</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># Map from probe to information to get outputs of that probe. Each tuple has:</span>
+        <span class="c1"># - chip_idx: the index of a chip to get information from</span>
+        <span class="c1"># - output_slice: a slice of outputs for the probe</span>
+        <span class="c1"># - n_packed_spikes: the number of spikes that have been &quot;packed&quot; to a dense</span>
+        <span class="c1">#   storage format (if 0, the spikes have not been packed).</span>
+        <span class="c1"># There will be at least one entry per chip that the probe gets output from,</span>
+        <span class="c1"># and possibly more if the outputs cannot be represented with one slice.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">snip_range</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">chip</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">chips</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">chip_snips</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ChipSnips</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">chip</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tmp_snip_dir</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">core</span> <span class="ow">in</span> <span class="n">chip</span><span class="o">.</span><span class="n">cores</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">learning_coreid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">for</span> <span class="n">synapse</span> <span class="ow">in</span> <span class="n">core</span><span class="o">.</span><span class="n">blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">synapses</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">error_chip_map</span><span class="p">[</span><span class="n">synapse</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">core</span><span class="o">.</span><span class="n">learning_coreid</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">probe</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">probes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">probe_data</span><span class="p">[</span><span class="n">probe</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">pinfo</span> <span class="o">=</span> <span class="n">board</span><span class="o">.</span><span class="n">probe_map</span><span class="p">[</span><span class="n">probe</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">target_idx</span><span class="p">,</span> <span class="n">block</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">probe</span><span class="o">.</span><span class="n">target</span><span class="p">):</span>
+                <span class="n">chip_idx</span> <span class="o">=</span> <span class="n">pinfo</span><span class="o">.</span><span class="n">chip_idx</span><span class="p">[</span><span class="n">target_idx</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">chip_snips</span><span class="p">[</span><span class="n">chip_idx</span><span class="p">]</span><span class="o">.</span><span class="n">prepare_for_probe</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="n">pinfo</span><span class="p">,</span> <span class="n">target_idx</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">snip_range</span><span class="p">[</span><span class="n">probe</span><span class="p">]</span> <span class="o">=</span> <span class="n">pinfo</span><span class="o">.</span><span class="n">snip_range</span>
+
+        <span class="k">for</span> <span class="n">chip_snip</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chip_snips</span><span class="p">:</span>
+            <span class="n">chip_snip</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nxsdk_board</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_spikes_per_step</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">host_snip</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nxsdk_board</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">chip_snips</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">chip_snip</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chip_snips</span><span class="p">:</span>
+            <span class="n">d_get</span><span class="p">(</span><span class="n">chip_snip</span><span class="o">.</span><span class="n">input_channel</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;Y29ubmVjdA==&quot;</span><span class="p">)(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">host_snip</span><span class="o">.</span><span class="n">snip</span><span class="p">,</span> <span class="n">chip_snip</span><span class="o">.</span><span class="n">io_snip</span>
+            <span class="p">)</span>
+            <span class="n">d_get</span><span class="p">(</span><span class="n">chip_snip</span><span class="o">.</span><span class="n">output_channel</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;Y29ubmVjdA==&quot;</span><span class="p">)(</span>
+                <span class="n">chip_snip</span><span class="o">.</span><span class="n">io_snip</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_snip</span><span class="o">.</span><span class="n">snip</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">bytes_per_step</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">packet_bytes</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="n">chip_snip</span><span class="o">.</span><span class="n">n_output_packets</span> <span class="k">for</span> <span class="n">chip_snip</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chip_snips</span>
+        <span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">render_template</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">template_data</span><span class="p">):</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.template&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">template</span><span class="p">))</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">obfs</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">obfs</span><span class="p">,</span> <span class="o">**</span><span class="n">template_data</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">connected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_snip</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_snip</span><span class="o">.</span><span class="n">connected</span>
+
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_snip</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">host_snip</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nxsdk_board</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_snip</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">host_snip</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">nxsdk_board</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">chip2host</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probes_receivers</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_snip</span><span class="o">.</span><span class="n">connected</span>
+
+        <span class="n">raw_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_snip</span><span class="o">.</span><span class="n">recv_bytes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bytes_per_step</span><span class="p">)</span>
+
+        <span class="c1"># create views into data for different chips</span>
+        <span class="n">time_steps</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">chip_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">chip_snip</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chip_snips</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">raw_data</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">chip_snip</span><span class="o">.</span><span class="n">n_outputs</span><span class="p">]</span>
+            <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="n">chip_snip</span><span class="o">.</span><span class="n">n_outputs</span>
+            <span class="k">assert</span> <span class="n">chip_snip</span><span class="o">.</span><span class="n">n_outputs</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Chip should always send timestep&quot;</span>
+            <span class="n">time_steps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">chip_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="n">Snips</span><span class="o">.</span><span class="n">channel_packet_elements</span> <span class="o">*</span> <span class="n">chip_snip</span><span class="o">.</span><span class="n">n_output_packets</span>
+
+        <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">ts</span> <span class="o">==</span> <span class="n">time_steps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">time_steps</span><span class="p">),</span> <span class="s2">&quot;Chips are out of sync!&quot;</span>
+
+        <span class="k">for</span> <span class="n">probe</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">probe_data</span><span class="p">:</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">chip_idx</span><span class="p">,</span> <span class="n">data_slice</span><span class="p">,</span> <span class="n">n_packed_spikes</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">snip_range</span><span class="p">[</span><span class="n">probe</span><span class="p">]:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">chip_data</span><span class="p">[</span><span class="n">chip_idx</span><span class="p">][</span><span class="n">data_slice</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">n_packed_spikes</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">packed8</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s2">&quot;uint8&quot;</span><span class="p">)</span>
+                    <span class="n">unpacked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unpackbits</span><span class="p">(</span><span class="n">packed8</span><span class="p">)</span>
+                    <span class="n">unpacked</span> <span class="o">=</span> <span class="n">unpacked</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">))[:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+                    <span class="n">unpacked</span> <span class="o">=</span> <span class="n">unpacked</span><span class="p">[:</span><span class="n">n_packed_spikes</span><span class="p">]</span>
+                    <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unpacked</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+            <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">outputs</span><span class="p">)</span>
+            <span class="n">weighted_outputs</span> <span class="o">=</span> <span class="n">probe</span><span class="o">.</span><span class="n">weight_outputs</span><span class="p">(</span><span class="n">outputs</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="n">receiver</span> <span class="o">=</span> <span class="n">probes_receivers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">probe</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">receiver</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># chip-&gt;host</span>
+                <span class="n">receiver</span><span class="o">.</span><span class="n">receive</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">dt</span> <span class="o">*</span> <span class="n">time_steps</span><span class="p">[</span><span class="n">chip_idx</span><span class="p">],</span> <span class="n">weighted_outputs</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># onchip probes</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">probe_data</span><span class="p">[</span><span class="n">probe</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">weighted_outputs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">host2chip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loihi_spikes</span><span class="p">,</span> <span class="n">errors</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_snip</span><span class="o">.</span><span class="n">connected</span>
+
+        <span class="n">error_info</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chip_snips</span><span class="p">]</span>
+        <span class="n">error_vecs</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chip_snips</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">synapse</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">errors</span><span class="p">:</span>
+            <span class="n">chip_idx</span><span class="p">,</span> <span class="n">core_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_chip_map</span><span class="p">[</span><span class="n">synapse</span><span class="p">]</span>
+            <span class="n">error_info</span><span class="p">[</span><span class="n">chip_idx</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">core_id</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">)])</span>
+            <span class="n">error_vecs</span><span class="p">[</span><span class="n">chip_idx</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="c1"># First `n_chips` elements of `msg` record number of elements going to</span>
+        <span class="c1"># each chip. We fill these once we create the message and can measure length.</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chip_snips</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">chip_snip</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chip_snips</span><span class="p">:</span>
+            <span class="c1"># measure current msg length to see how much it grows</span>
+            <span class="n">data_len0</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+            <span class="n">chip_spikes</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">loihi_spikes</span><span class="p">[</span><span class="n">loihi_spikes</span><span class="p">[</span><span class="s2">&quot;chip_id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">chip_snip</span><span class="o">.</span><span class="n">chip_id</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">loihi_spikes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+                <span class="k">else</span> <span class="p">[]</span>
+            <span class="p">)</span>
+
+            <span class="n">max_spikes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_spikes_per_step</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">chip_spikes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_spikes</span><span class="p">:</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                    <span class="s2">&quot;Too many spikes (</span><span class="si">%d</span><span class="s2">) sent in one timestep. Increase the &quot;</span>
+                    <span class="s2">&quot;value of `snip_max_spikes_per_step` (currently set to </span><span class="si">%d</span><span class="s2">). &quot;</span>
+                    <span class="s2">&quot;See</span><span class="se">\n</span><span class="s2">  https://www.nengo.ai/nengo-loihi/configuration.html</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;for details.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chip_spikes</span><span class="p">),</span> <span class="n">max_spikes</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">chip_spikes</span> <span class="o">=</span> <span class="n">chip_spikes</span><span class="p">[:</span><span class="n">max_spikes</span><span class="p">]</span>
+
+            <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chip_spikes</span><span class="p">))</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">SpikePacker</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">chip_spikes</span><span class="p">))</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">error_vecs</span><span class="p">[</span><span class="n">chip_snip</span><span class="o">.</span><span class="n">idx</span><span class="p">])</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">error_vecs_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">error_vecs</span><span class="p">[</span><span class="n">chip_snip</span><span class="o">.</span><span class="n">idx</span><span class="p">])</span>
+                <span class="n">error_vecs_i</span> <span class="o">=</span> <span class="n">scale_pes_errors</span><span class="p">(</span>
+                    <span class="n">error_vecs_i</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">pes_error_scale</span>
+                <span class="p">)</span>
+
+                <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">error_info</span><span class="p">[</span><span class="n">chip_snip</span><span class="o">.</span><span class="n">idx</span><span class="p">])</span> <span class="o">==</span> <span class="n">chip_snip</span><span class="o">.</span><span class="n">n_errors</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">for</span> <span class="n">core_id</span><span class="p">,</span> <span class="n">e_len</span> <span class="ow">in</span> <span class="n">error_info</span><span class="p">[</span><span class="n">chip_snip</span><span class="o">.</span><span class="n">idx</span><span class="p">]:</span>
+                    <span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">core_id</span><span class="p">,</span> <span class="n">e_len</span><span class="p">]</span> <span class="o">+</span> <span class="n">error_vecs_i</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">e_len</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="n">e_len</span>
+
+            <span class="n">data</span><span class="p">[</span><span class="n">chip_snip</span><span class="o">.</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">data_len0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">host_snip</span><span class="o">.</span><span class="n">send_all</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ChipSnips</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Track information for creating Snips for each chip.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    chip_id : int</span>
+<span class="sd">        ID of the chip.</span>
+<span class="sd">    cores : set</span>
+<span class="sd">        Core IDs with output.</span>
+<span class="sd">    idx : int</span>
+<span class="sd">        Index of the chip.</span>
+<span class="sd">    input_channel</span>
+<span class="sd">        The channel used to provide input to the chip.</span>
+<span class="sd">    io_snip</span>
+<span class="sd">        The IO snip process associated with this chip.</span>
+<span class="sd">    last_output : int</span>
+<span class="sd">        The last output processed. Used to fill out ``snip_range`` correctly.</span>
+<span class="sd">    learn_snip</span>
+<span class="sd">        The learn snip process associated with this chip.</span>
+<span class="sd">    n_errors : int</span>
+<span class="sd">        The number of cores receiving learning errors.</span>
+<span class="sd">    n_output_packets : int</span>
+<span class="sd">        Number of packets required to send all outputs.</span>
+<span class="sd">    n_outputs : int</span>
+<span class="sd">        Total number of outputs, in int32s.</span>
+<span class="sd">    output_channel</span>
+<span class="sd">        The channel used to gather output from the chip.</span>
+<span class="sd">    probes : list of tuples</span>
+<span class="sd">        Each tuple is ``(offset, key, core_id, comp_start, comp_step, comp_len)``</span>
+<span class="sd">    total_error_length : int</span>
+<span class="sd">        The total length of error information, in int32s.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">output_header_len</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># First output is timestamp</span>
+    <span class="n">output_offset</span> <span class="o">=</span> <span class="n">output_header_len</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">chip</span><span class="p">,</span> <span class="n">tmp_snip_dir</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tmp_snip_dir</span> <span class="o">=</span> <span class="n">tmp_snip_dir</span>
+
+        <span class="c1"># --- determine required information for learning</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_errors</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_error_len</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">core</span> <span class="ow">in</span> <span class="n">chip</span><span class="o">.</span><span class="n">cores</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">core</span><span class="o">.</span><span class="n">learning_coreid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="k">assert</span> <span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">blocks</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+            <span class="p">),</span> <span class="s2">&quot;Learning not implemented with multiple blocks per core&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_errors</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">total_error_len</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">core</span><span class="o">.</span><span class="n">blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">n_neurons</span> <span class="o">//</span> <span class="mi">2</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cores</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">probes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">io_snip</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">learn_snip</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chip_id</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_channel</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_channel</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_output</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">input_channel_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;nengo_io_h2c_chip_</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">last_output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_output</span>
+
+    <span class="nd">@last_output</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">last_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_last_output</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="c1"># number of outputs (in ints and packets) for each chip</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_n_outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_offset</span> <span class="o">+</span> <span class="n">val</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_n_output_packets</span> <span class="o">=</span> <span class="n">ceil_div</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_n_outputs</span><span class="p">,</span> <span class="n">Snips</span><span class="o">.</span><span class="n">channel_packet_elements</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">n_output_packets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_n_output_packets</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">n_outputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_n_outputs</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">output_channel_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;nengo_io_c2h_chip_</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span>
+
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nxsdk_board</span><span class="p">,</span> <span class="n">max_spikes_per_step</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chip_id</span> <span class="o">=</span> <span class="n">d_get</span><span class="p">(</span><span class="n">d_get</span><span class="p">(</span><span class="n">nxsdk_board</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;bjJDaGlwcw==&quot;</span><span class="p">)[</span><span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">],</span> <span class="sa">b</span><span class="s2">&quot;aWQ=&quot;</span><span class="p">)</span>
+        <span class="n">chip_buffer_size</span> <span class="o">=</span> <span class="n">roundup</span><span class="p">(</span>
+            <span class="nb">max</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">n_outputs</span><span class="p">,</span>  <span class="c1"># currently, buffer needs to hold all outputs</span>
+                <span class="n">Snips</span><span class="o">.</span><span class="n">channel_packet_elements</span>
+                <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">SpikePacker</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">Snips</span><span class="o">.</span><span class="n">obfs</span><span class="p">[</span><span class="s2">&quot;error_info_size&quot;</span><span class="p">]),</span>
+            <span class="p">),</span>
+            <span class="n">Snips</span><span class="o">.</span><span class="n">channel_packet_elements</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># --- create IO snip</span>
+        <span class="n">c_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_snip_dir</span><span class="p">,</span> <span class="s2">&quot;nengo_io_chip_</span><span class="si">%d</span><span class="s2">.c&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">)</span>
+        <span class="n">h_filename</span> <span class="o">=</span> <span class="s2">&quot;nengo_io_chip_</span><span class="si">%d</span><span class="s2">.h&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="s2">&quot;Creating </span><span class="si">%s</span><span class="s2"> with </span><span class="si">%d</span><span class="s2"> outputs, </span><span class="si">%d</span><span class="s2"> error, </span><span class="si">%d</span><span class="s2"> cores, </span><span class="si">%d</span><span class="s2"> probes&quot;</span><span class="p">,</span>
+            <span class="n">c_path</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_outputs</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_errors</span><span class="p">,</span>
+            <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cores</span><span class="p">),</span>
+            <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">probes</span><span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="n">Snips</span><span class="o">.</span><span class="n">render_template</span><span class="p">(</span>
+            <span class="s2">&quot;nengo_io.c&quot;</span><span class="p">,</span>
+            <span class="n">c_path</span><span class="p">,</span>
+            <span class="n">header_file</span><span class="o">=</span><span class="n">h_filename</span><span class="p">,</span>
+            <span class="n">n_outputs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_outputs</span><span class="p">,</span>
+            <span class="n">n_output_packets</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_output_packets</span><span class="p">,</span>
+            <span class="n">n_errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_errors</span><span class="p">,</span>
+            <span class="n">buffer_size</span><span class="o">=</span><span class="n">chip_buffer_size</span><span class="p">,</span>
+            <span class="n">packet_elements</span><span class="o">=</span><span class="n">Snips</span><span class="o">.</span><span class="n">channel_packet_elements</span><span class="p">,</span>
+            <span class="n">input_channel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_channel_name</span><span class="p">,</span>
+            <span class="n">output_channel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">output_channel_name</span><span class="p">,</span>
+            <span class="n">cores</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cores</span><span class="p">,</span>
+            <span class="n">probes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">probes</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># write header file using template</span>
+        <span class="n">Snips</span><span class="o">.</span><span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;nengo_io.h&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_snip_dir</span><span class="p">,</span> <span class="n">h_filename</span><span class="p">))</span>
+
+        <span class="c1"># create SNIP process</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Creating nengo_io chip </span><span class="si">%d</span><span class="s2"> process&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">io_snip</span> <span class="o">=</span> <span class="n">d_func</span><span class="p">(</span>
+            <span class="n">nxsdk_board</span><span class="p">,</span>
+            <span class="sa">b</span><span class="s2">&quot;Y3JlYXRlU25pcA==&quot;</span><span class="p">,</span>
+            <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span>
+                <span class="sa">b</span><span class="s2">&quot;bmFtZQ==&quot;</span><span class="p">:</span> <span class="s2">&quot;nengo_io_chip&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chip_id</span><span class="p">),</span>
+                <span class="sa">b</span><span class="s2">&quot;Y0ZpbGVQYXRo&quot;</span><span class="p">:</span> <span class="n">c_path</span><span class="p">,</span>
+                <span class="sa">b</span><span class="s2">&quot;aW5jbHVkZURpcg==&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">tmp_snip_dir</span><span class="p">,</span>
+                <span class="sa">b</span><span class="s2">&quot;ZnVuY05hbWU=&quot;</span><span class="p">:</span> <span class="s2">&quot;nengo_io&quot;</span><span class="p">,</span>
+                <span class="sa">b</span><span class="s2">&quot;Z3VhcmROYW1l&quot;</span><span class="p">:</span> <span class="s2">&quot;guard_io&quot;</span><span class="p">,</span>
+                <span class="sa">b</span><span class="s2">&quot;cGhhc2U=&quot;</span><span class="p">:</span> <span class="n">d_get</span><span class="p">(</span><span class="n">SnipPhase</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;RU1CRURERURfTUdNVA==&quot;</span><span class="p">),</span>
+                <span class="sa">b</span><span class="s2">&quot;Y2hpcElk&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">chip_id</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="c1"># --- create learning snip</span>
+        <span class="n">h_filename</span> <span class="o">=</span> <span class="s2">&quot;nengo_learn_chip_</span><span class="si">%d</span><span class="s2">.h&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span>
+        <span class="n">c_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_snip_dir</span><span class="p">,</span> <span class="s2">&quot;nengo_learn_chip_</span><span class="si">%d</span><span class="s2">.c&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">)</span>
+
+        <span class="c1"># write c file using template</span>
+        <span class="n">Snips</span><span class="o">.</span><span class="n">render_template</span><span class="p">(</span>
+            <span class="s2">&quot;nengo_learn.c&quot;</span><span class="p">,</span> <span class="n">c_path</span><span class="p">,</span> <span class="n">header_file</span><span class="o">=</span><span class="n">h_filename</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># write header file using template</span>
+        <span class="n">Snips</span><span class="o">.</span><span class="n">render_template</span><span class="p">(</span>
+            <span class="s2">&quot;nengo_learn.h&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_snip_dir</span><span class="p">,</span> <span class="n">h_filename</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="c1"># create SNIP process</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Creating nengo_learn chip </span><span class="si">%d</span><span class="s2"> process&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">learn_snip</span> <span class="o">=</span> <span class="n">d_func</span><span class="p">(</span>
+            <span class="n">nxsdk_board</span><span class="p">,</span>
+            <span class="sa">b</span><span class="s2">&quot;Y3JlYXRlU25pcA==&quot;</span><span class="p">,</span>
+            <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span>
+                <span class="sa">b</span><span class="s2">&quot;bmFtZQ==&quot;</span><span class="p">:</span> <span class="s2">&quot;nengo_learn&quot;</span><span class="p">,</span>
+                <span class="sa">b</span><span class="s2">&quot;Y0ZpbGVQYXRo&quot;</span><span class="p">:</span> <span class="n">c_path</span><span class="p">,</span>
+                <span class="sa">b</span><span class="s2">&quot;aW5jbHVkZURpcg==&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">tmp_snip_dir</span><span class="p">,</span>
+                <span class="sa">b</span><span class="s2">&quot;ZnVuY05hbWU=&quot;</span><span class="p">:</span> <span class="s2">&quot;nengo_learn&quot;</span><span class="p">,</span>
+                <span class="sa">b</span><span class="s2">&quot;Z3VhcmROYW1l&quot;</span><span class="p">:</span> <span class="s2">&quot;guard_learn&quot;</span><span class="p">,</span>
+                <span class="sa">b</span><span class="s2">&quot;cGhhc2U=&quot;</span><span class="p">:</span> <span class="n">d_get</span><span class="p">(</span><span class="n">SnipPhase</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;RU1CRURERURfUFJFTEVBUk5fTUdNVA==&quot;</span><span class="p">),</span>
+                <span class="sa">b</span><span class="s2">&quot;Y2hpcElk&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">chip_id</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="c1"># --- create channels</span>
+        <span class="n">input_channel_size</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_header_len</span>  <span class="c1"># first int stores number of spikes</span>
+            <span class="o">+</span> <span class="n">max_spikes_per_step</span> <span class="o">*</span> <span class="n">SpikePacker</span><span class="o">.</span><span class="n">size</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_error_len</span>
+        <span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="s2">&quot;Creating </span><span class="si">%s</span><span class="s2"> channel (</span><span class="si">%d</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_channel_name</span><span class="p">,</span> <span class="n">input_channel_size</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_channel</span> <span class="o">=</span> <span class="n">d_get</span><span class="p">(</span><span class="n">nxsdk_board</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;Y3JlYXRlQ2hhbm5lbA==&quot;</span><span class="p">)(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_channel_name</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span>
+            <span class="o">**</span><span class="p">{</span>
+                <span class="c1"># channel size (in elements)</span>
+                <span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;bnVtRWxlbWVudHM=&quot;</span><span class="p">):</span> <span class="n">input_channel_size</span><span class="p">,</span>
+                <span class="c1"># size of one packet (in bytes)</span>
+                <span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;bWVzc2FnZVNpemU=&quot;</span><span class="p">):</span> <span class="n">Snips</span><span class="o">.</span><span class="n">packet_bytes</span><span class="p">,</span>
+                <span class="c1"># size of send/receive buffer on chip/host (in packets)</span>
+                <span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;c2xhY2s=&quot;</span><span class="p">):</span> <span class="mi">16</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="s2">&quot;Creating </span><span class="si">%s</span><span class="s2"> channel (</span><span class="si">%d</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_channel_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_outputs</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_channel</span> <span class="o">=</span> <span class="n">d_get</span><span class="p">(</span><span class="n">nxsdk_board</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;Y3JlYXRlQ2hhbm5lbA==&quot;</span><span class="p">)(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_channel_name</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span>
+            <span class="o">**</span><span class="p">{</span>
+                <span class="c1"># channel size (in elements)</span>
+                <span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;bnVtRWxlbWVudHM=&quot;</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_outputs</span><span class="p">,</span>
+                <span class="c1"># size of one packet (in bytes)</span>
+                <span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;bWVzc2FnZVNpemU=&quot;</span><span class="p">):</span> <span class="n">Snips</span><span class="o">.</span><span class="n">packet_bytes</span><span class="p">,</span>
+                <span class="c1"># size of send/receive buffer on chip/host (in packets)</span>
+                <span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;c2xhY2s=&quot;</span><span class="p">):</span> <span class="mi">16</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">prepare_for_probe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">pinfo</span><span class="p">,</span> <span class="n">target_idx</span><span class="p">):</span>
+        <span class="n">chip_idx</span> <span class="o">=</span> <span class="n">pinfo</span><span class="o">.</span><span class="n">chip_idx</span><span class="p">[</span><span class="n">target_idx</span><span class="p">]</span>
+        <span class="n">core_id</span> <span class="o">=</span> <span class="n">pinfo</span><span class="o">.</span><span class="n">core_id</span><span class="p">[</span><span class="n">target_idx</span><span class="p">]</span>
+        <span class="n">compartment_idxs</span> <span class="o">=</span> <span class="n">pinfo</span><span class="o">.</span><span class="n">compartment_idxs</span><span class="p">[</span><span class="n">target_idx</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cores</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">core_id</span><span class="p">)</span>
+
+        <span class="n">key</span> <span class="o">=</span> <span class="n">pinfo</span><span class="o">.</span><span class="n">key</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;spike&quot;</span><span class="p">:</span>
+            <span class="n">refract_delay</span> <span class="o">=</span> <span class="n">block</span><span class="o">.</span><span class="n">compartment</span><span class="o">.</span><span class="n">refract_delay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">block</span><span class="o">.</span><span class="n">compartment</span><span class="o">.</span><span class="n">refract_delay</span> <span class="o">==</span> <span class="n">refract_delay</span><span class="p">)</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">refract_delay</span> <span class="o">*</span> <span class="n">d</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;MTI4&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+
+        <span class="n">n_comps</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">compartment_idxs</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">n_comps</span><span class="p">)</span>
+        <span class="n">comp0</span> <span class="o">=</span> <span class="n">compartment_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">comp_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">compartment_idxs</span><span class="p">)</span>
+        <span class="n">is_ranged_comps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span>
+            <span class="n">comp_diff</span> <span class="o">==</span> <span class="n">comp_diff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">comp_diff</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="p">)</span>
+        <span class="n">is_packed_spikes</span> <span class="o">=</span> <span class="n">is_ranged_comps</span> <span class="ow">and</span> <span class="p">(</span><span class="n">pinfo</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;spike&quot;</span><span class="p">)</span>
+        <span class="n">n_packed_spikes</span> <span class="o">=</span> <span class="n">n_comps</span> <span class="k">if</span> <span class="n">is_packed_spikes</span> <span class="k">else</span> <span class="mi">0</span>
+
+        <span class="n">output_len</span> <span class="o">=</span> <span class="n">ceil_div</span><span class="p">(</span><span class="n">n_comps</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_packed_spikes</span> <span class="k">else</span> <span class="n">n_comps</span>
+        <span class="n">output_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_output</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_output</span> <span class="o">+</span> <span class="n">output_len</span><span class="p">)</span>
+        <span class="n">pinfo</span><span class="o">.</span><span class="n">snip_range</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">chip_idx</span><span class="p">,</span> <span class="n">output_slice</span><span class="p">,</span> <span class="n">n_packed_spikes</span><span class="p">))</span>
+
+        <span class="n">offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_offset</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_output</span>
+        <span class="k">if</span> <span class="n">is_ranged_comps</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">probes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">offset</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">core_id</span><span class="p">,</span> <span class="n">comp0</span><span class="p">,</span> <span class="n">comp_diff</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_comps</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">comp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">compartment_idxs</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">probes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">offset</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">core_id</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_output</span> <span class="o">+=</span> <span class="n">output_len</span>
+
+
+<span class="k">class</span> <span class="nc">HostSnip</span><span class="p">:</span>
+    <span class="n">recv_retries</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">recv_size</span> <span class="o">=</span> <span class="mi">4096</span>  <span class="c1"># python docs recommend small power of 2, e.g. 4096</span>
+    <span class="n">recv_timeout</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tmp_snip_dir</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tmp_snip_dir</span> <span class="o">=</span> <span class="n">tmp_snip_dir</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">connected</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">snip</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_TCP</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">TCP_NODELAY</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nxsdk_board</span><span class="p">):</span>
+        <span class="c1"># pause to allow host snip to start and listen for connection</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+        <span class="n">host_address</span> <span class="o">=</span> <span class="n">d_get</span><span class="p">(</span>
+            <span class="n">nxsdk_board</span><span class="p">,</span>
+            <span class="sa">b</span><span class="s2">&quot;ZXhlY3V0b3I==&quot;</span><span class="p">,</span>
+            <span class="sa">b</span><span class="s2">&quot;X2hvc3RfY29vcmRpbmF0b3I==&quot;</span><span class="p">,</span>
+            <span class="sa">b</span><span class="s2">&quot;aG9zdEFkZHI=&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Connecting to host socket at (</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">host_address</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">socket</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">host_address</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connected</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># send -1 to signal host/chip that we&#39;re done</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">send_all</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="c1"># pause to allow chip to receive -1 signal via host</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connected</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nxsdk_board</span><span class="p">,</span> <span class="n">chip_snips</span><span class="p">):</span>
+        <span class="n">read_size</span> <span class="o">=</span> <span class="n">roundup</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">Snips</span><span class="o">.</span><span class="n">channel_packet_elements</span><span class="p">)</span>
+        <span class="n">write_packets</span> <span class="o">=</span> <span class="n">ceil_div</span><span class="p">(</span><span class="n">read_size</span><span class="p">,</span> <span class="n">Snips</span><span class="o">.</span><span class="n">channel_packet_elements</span><span class="p">)</span>
+        <span class="n">write_size</span> <span class="o">=</span> <span class="n">write_packets</span> <span class="o">*</span> <span class="n">Snips</span><span class="o">.</span><span class="n">channel_packet_elements</span>
+        <span class="c1"># double buffer size, just so we can do a full extra read/write if we need to</span>
+        <span class="n">buffer_size</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">roundup</span><span class="p">(</span>
+            <span class="nb">max</span><span class="p">(</span><span class="n">read_size</span><span class="p">,</span> <span class="n">write_size</span><span class="p">),</span> <span class="n">Snips</span><span class="o">.</span><span class="n">channel_packet_elements</span>
+        <span class="p">)</span>
+
+        <span class="n">cpp_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_snip_dir</span><span class="p">,</span> <span class="s2">&quot;nengo_host.cpp&quot;</span><span class="p">)</span>
+        <span class="n">Snips</span><span class="o">.</span><span class="n">render_template</span><span class="p">(</span>
+            <span class="s2">&quot;nengo_host.cpp&quot;</span><span class="p">,</span>
+            <span class="n">cpp_path</span><span class="p">,</span>
+            <span class="n">n_chips</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">chip_snips</span><span class="p">),</span>
+            <span class="n">buffer_size</span><span class="o">=</span><span class="n">buffer_size</span><span class="p">,</span>
+            <span class="n">packet_size</span><span class="o">=</span><span class="n">Snips</span><span class="o">.</span><span class="n">channel_packet_elements</span><span class="p">,</span>
+            <span class="n">read_size</span><span class="o">=</span><span class="n">read_size</span><span class="p">,</span>
+            <span class="n">write_packets</span><span class="o">=</span><span class="n">write_packets</span><span class="p">,</span>
+            <span class="n">output_packets</span><span class="o">=</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">chip_snip</span><span class="o">.</span><span class="n">n_output_packets</span> <span class="k">for</span> <span class="n">chip_snip</span> <span class="ow">in</span> <span class="n">chip_snips</span>
+            <span class="p">),</span>
+            <span class="n">server_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">,</span>
+            <span class="n">input_channels</span><span class="o">=</span><span class="p">[</span><span class="n">chip_snip</span><span class="o">.</span><span class="n">input_channel_name</span> <span class="k">for</span> <span class="n">chip_snip</span> <span class="ow">in</span> <span class="n">chip_snips</span><span class="p">],</span>
+            <span class="n">output_channels</span><span class="o">=</span><span class="p">[</span><span class="n">chip_snip</span><span class="o">.</span><span class="n">output_channel_name</span> <span class="k">for</span> <span class="n">chip_snip</span> <span class="ow">in</span> <span class="n">chip_snips</span><span class="p">],</span>
+        <span class="p">)</span>
+
+        <span class="c1"># make process</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">snip</span> <span class="o">=</span> <span class="n">d_func</span><span class="p">(</span>
+            <span class="n">nxsdk_board</span><span class="p">,</span>
+            <span class="sa">b</span><span class="s2">&quot;Y3JlYXRlU25pcA==&quot;</span><span class="p">,</span>
+            <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span>
+                <span class="sa">b</span><span class="s2">&quot;cGhhc2U=&quot;</span><span class="p">:</span> <span class="n">SnipPhase</span><span class="o">.</span><span class="n">HOST_CONCURRENT_EXECUTION</span><span class="p">,</span>
+                <span class="sa">b</span><span class="s2">&quot;Y3BwRmlsZQ==&quot;</span><span class="p">:</span> <span class="n">cpp_path</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">recv_bytes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bytes_expected</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">([])</span>
+        <span class="n">n_retries</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">bytes_expected</span> <span class="ow">and</span> <span class="n">n_retries</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv_retries</span><span class="p">:</span>
+            <span class="n">ready</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">select</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">socket</span><span class="p">],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv_timeout</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">socket</span> <span class="ow">in</span> <span class="n">ready</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">+=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">recv_size</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="n">n_retries</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:],</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Received shutdown signal from chip&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">bytes_expected</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s2">&quot;Received (</span><span class="si">%d</span><span class="s2">) less than expected (</span><span class="si">%d</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">bytes_expected</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">send_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">msg_bytes</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">i&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="o">*</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">socket</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">msg_bytes</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">SpikePacker</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Packs spikes for sending to chip</span>
+
+<span class="sd">    Currently represents a spike as two int32s.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">size</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># must match nengo_io.c.template</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">pack</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">spikes</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pack the spike into a tuple of 32-bit integers.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        spike : structured ndarray of spikes</span>
+<span class="sd">            The spikes to pack.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        packed_spike : tuple of int</span>
+<span class="sd">            A tuple of length ``size * n_spikes`` to represent this spike.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span>
+            <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;chip_id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;chip_id&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">),</span> <span class="s2">&quot;All spikes must go to the same chip&quot;</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;core_id&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1024</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;axon_id&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">4096</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;axon_type&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">32</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;atom&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1024</span><span class="p">)</span>
+
+        <span class="n">axon_type</span> <span class="o">=</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;axon_type&quot;</span><span class="p">]</span>
+        <span class="n">axon_type</span><span class="p">[</span><span class="n">axon_type</span> <span class="o">==</span> <span class="mi">16</span><span class="p">]</span> <span class="o">+=</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;atom_bits_extra&quot;</span><span class="p">][</span><span class="n">axon_type</span> <span class="o">==</span> <span class="mi">16</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">left_shift</span><span class="p">(</span><span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;core_id&quot;</span><span class="p">],</span> <span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;axon_id&quot;</span><span class="p">],</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">left_shift</span><span class="p">(</span><span class="n">axon_type</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;atom&quot;</span><span class="p">],</span>
+            <span class="p">]</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+</pre></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div><footer class="text-light footer-main gradient-bottom">
+  <p class="small text-center mb-0">
+    <a class="no-hover-line" href="https://appliedbrainresearch.com">
+      <img
+        src="https://appliedbrainresearch.com/img/logo-blue-notext.svg"
+        height="48"
+      />
+    </a>
+    <a href="https://www.nengo.ai/">What is Nengo?</a>
+    <a href="https://www.nengo.ai/examples/">Examples</a>
+    <a href="https://www.nengo.ai/documentation/">Documentation</a>
+    <a href="https://www.nengo.ai/getting-started/">Getting started</a>
+    <a href="https://www.nengo.ai/privacy/">Privacy</a>
+  </p>
+  <p class="small text-center mb-0">&copy; Applied Brain Research</p>
+</footer>
+<script>
+  function switchVersion(select) {
+    var option = select.selectedOptions[0];
+    if (option.hasAttribute("value")) {
+      window.location = option.value;
+    }
+  }
+</script>
+
+<script>
+  var elements = document.querySelectorAll('.sidenav');
+  Stickyfill.add(elements);
+</script>
+<script>
+  ScrollReveal().reveal(".fade-in", {
+      scale: 0.85,
+      duration: 1000,
+      delay: 250,
+      interval: 50
+  });
+</script>
+<script>
+  $('a.toggle-sidenav').on('click', function(e) {
+    e.preventDefault();
+    if ( $(this).hasClass('active') ) {
+      $(this).removeClass('active');
+      $('.sidenav').removeClass('open');
+    } else {
+      $(this).addClass('active');
+      $('.sidenav').addClass('open');
+    }
+  });
+</script>
+<script>
+  var lists = document.querySelectorAll('.toctree ul');
+  lists.forEach((ul) => {
+      ul.classList.add("nav");
+  });
+  var links = document.querySelectorAll('.toctree a');
+  links.forEach((link) => {
+      link.classList.add("nav-link");
+  });
+  $("body").scrollspy({target: ".sidenav"});
+</script>
+  </body>
+</html>
